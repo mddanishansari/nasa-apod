@@ -1,4 +1,4 @@
-package com.md.nasaapod.picture_list.model
+package com.md.nasaapod.picture_list.data
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.text.SimpleDateFormat
