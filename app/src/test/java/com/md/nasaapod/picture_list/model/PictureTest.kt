@@ -2,6 +2,7 @@ package com.md.nasaapod.picture_list.model
 
 import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.md.nasaapod.picture_list.data.Picture
 import org.assertj.core.api.Assertions.assertThat
 
 import org.junit.Before

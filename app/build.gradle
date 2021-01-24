@@ -44,6 +44,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'org.assertj:assertj-core:3.18.1'
 
     // STANDARD KOTLIN LIB
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -80,4 +81,9 @@ dependencies {
     // FRAGMENT NAVIGATION
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.2'
+
+    // JACKSON (for Serializing Json)
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.0'
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.12.0"
 }
