@@ -6,7 +6,7 @@ import java.util.*
 
 data class Picture(
     @JsonProperty("copyright")
-    val copyright: String,
+    val copyright: String?,
     @JsonProperty("date")
     private val dateInString: String,
     @JsonProperty("explanation")
