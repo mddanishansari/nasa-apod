@@ -34,6 +34,8 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
             mainViewModel.fetchPictures()
         }
 
+        // user should be able to fetch pictures if something goes wrong
+        binding.btntryAgain.setOnClickListener { mainViewModel.fetchPictures() }
     }
 
     private fun handlePictureList(pictureListState: PictureListState) {
