@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#cc000000"
+            android:textColor="#ffffff"
             android:fontFamily="@font/lato_light"
             android:padding="8dp"
             tools:text="Starburst Galaxy M94 from Hubble" />
