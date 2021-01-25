@@ -1,13 +1,14 @@
 package com.md.nasaapod.picture_list.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.md.nasaapod.MainViewModel
 import com.md.nasaapod.R
 import com.md.nasaapod.databinding.FragmentPictureListBinding
+import com.md.nasaapod.picture_list.adapter.PictureAdapter
 import com.md.nasaapod.picture_list.data.PictureListState
 import com.md.nasaapod.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,12 +26,27 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
         mainViewModel.pictureListStateLiveData()
             .observe(viewLifecycleOwner) { handlePictureList(it) }
 
-        // fetch pictures
-        mainViewModel.fetchPictures()
+        // fetch pictures only if necessary
+        val pictureListState = mainViewModel.pictureListStateLiveData().value
+        if (pictureListState is PictureListState.Success && pictureListState.pictureList.isEmpty()) {
+            handlePictureList(pictureListState)
+        } else {
+            mainViewModel.fetchPictures()
+        }
+
     }
 
     private fun handlePictureList(pictureListState: PictureListState) {
-        Log.d(TAG, "handlePictureList: $pictureListState")
+
+        // change visibility of views according to different states
+        binding.layoutLoading.isVisible = pictureListState is PictureListState.Loading
+        binding.layoutError.isVisible = pictureListState is PictureListState.Failed
+        binding.layoutData.isVisible = pictureListState is PictureListState.Success
+
+        if (pictureListState is PictureListState.Success) {
+            val adapter = PictureAdapter(pictureListState.pictureList)
+            binding.rvPicture.adapter = adapter
+        }
     }
 
     companion object {
