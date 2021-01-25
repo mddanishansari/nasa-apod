@@ -8,7 +8,7 @@ import androidx.fragment.app.activityViewModels
 import com.md.nasaapod.MainViewModel
 import com.md.nasaapod.R
 import com.md.nasaapod.databinding.FragmentPictureListBinding
-import com.md.nasaapod.picture_list.data.Picture
+import com.md.nasaapod.picture_list.data.PictureListState
 import com.md.nasaapod.utils.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,15 +21,16 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // observe list of pictures
-        mainViewModel.pictureListLiveData().observe(viewLifecycleOwner) { handlePictureList(it) }
+        // observe picture list state
+        mainViewModel.pictureListStateLiveData()
+            .observe(viewLifecycleOwner) { handlePictureList(it) }
 
         // fetch pictures
         mainViewModel.fetchPictures()
     }
 
-    private fun handlePictureList(pictureList: List<Picture>) {
-        Log.d(TAG, "handlePictureList: $pictureList")
+    private fun handlePictureList(pictureListState: PictureListState) {
+        Log.d(TAG, "handlePictureList: $pictureListState")
     }
 
     companion object {
