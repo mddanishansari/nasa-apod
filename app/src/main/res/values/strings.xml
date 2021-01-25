@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Nasa Apod</string>
+    <string name="error_fetching_data">Something wen\'t wrong while fetching pictures</string>
+    <string name="fetching_data_msg">Fetching data</string>
+    <string name="try_again">Try again</string>
 </resources>
