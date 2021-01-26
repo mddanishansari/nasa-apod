@@ -47,8 +47,13 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
         binding.layoutData.isVisible = pictureListState is PictureListState.Success
 
         if (pictureListState is PictureListState.Success) {
-            val adapter = PictureAdapter(pictureListState.pictureList) {
-                findNavController().navigate(R.id.action_pictureListFragment_to_pictureDetailFragment)
+            val adapter = PictureAdapter(pictureListState.pictureList) { position ->
+                // navigate to detail screen
+                val action =
+                    PictureListFragmentDirections.actionPictureListFragmentToPictureDetailFragment(
+                        position
+                    )
+                findNavController().navigate(action)
             }
             binding.rvPicture.adapter = adapter
         }

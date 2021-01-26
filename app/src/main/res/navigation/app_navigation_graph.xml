@@ -18,5 +18,9 @@
         android:id="@+id/pictureDetailFragment"
         android:name="com.md.nasaapod.picture_detail.ui.PictureDetailFragment"
         android:label="PictureDetailFragment"
-        tools:layout="@layout/fragment_picture_detail" />
+        tools:layout="@layout/fragment_picture_detail">
+        <argument
+            android:name="picturePosition"
+            app:argType="integer" />
+    </fragment>
 </navigation>
