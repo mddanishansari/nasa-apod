@@ -4,7 +4,7 @@ Nasa Apod is an application created as a take home exercise as part of an interv
 
 ## Download
 
-You can download the APK from this [link](https://github.com/mddanishansari/nasa-apod/apk/app-debug.apk)
+You can download the APK from this [link](https://github.com/mddanishansari/nasa-apod/release/app-debug.apk)
 
 ## Technologies
 
