@@ -7,6 +7,8 @@ import coil.load
 import com.md.nasaapod.R
 import com.md.nasaapod.databinding.ItemPictureDetailBinding
 import com.md.nasaapod.picture_list.data.Picture
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PictureDetailAdapter(private val pictureList: List<Picture>) :
     RecyclerView.Adapter<PictureDetailAdapter.PictureViewHolder>() {
@@ -20,6 +22,22 @@ class PictureDetailAdapter(private val pictureList: List<Picture>) :
                 error(R.drawable.ic_error)
                 crossfade(true)
             }
+
+            // set title
+            binding.tvTitle.text = picture.title
+
+            // set date
+            binding.tvDate.text =
+                SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(picture.date)
+
+            // set copyright
+            if (picture.copyright != null) {
+                binding.tvCopyright.text =
+                    binding.root.context.getString(R.string.copyright, picture.copyright)
+            }
+
+            // set explanation
+            binding.tvExplanation.text = picture.explanation
         }
     }
 

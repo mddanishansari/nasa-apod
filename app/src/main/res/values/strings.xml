@@ -4,4 +4,5 @@
     <string name="error_picture_detail">It seems like we didn\'t find what you were looking for :(</string>
     <string name="fetching_data_msg">Fetching data</string>
     <string name="try_again">Try again</string>
+    <string name="copyright">by %s</string>
 </resources>
