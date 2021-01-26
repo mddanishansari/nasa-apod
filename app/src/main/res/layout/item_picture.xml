@@ -26,7 +26,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_thumbnail_placeholder" />
+            tools:src="@drawable/sample_picture" />
 
         <TextView
             app:layout_constraintBottom_toBottomOf="parent"
