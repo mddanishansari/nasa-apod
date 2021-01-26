@@ -2,6 +2,7 @@ package com.md.nasaapod.picture_detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.md.nasaapod.R
@@ -34,6 +35,8 @@ class PictureDetailAdapter(private val pictureList: List<Picture>) :
             if (picture.copyright != null) {
                 binding.tvCopyright.text =
                     binding.root.context.getString(R.string.copyright, picture.copyright)
+            } else {
+                binding.tvCopyright.isVisible = false
             }
 
             // set explanation
