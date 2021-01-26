@@ -59,6 +59,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    // VIEWPAGER2 (for screens/images slider)
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
     // COIL (for loading images)
     implementation 'io.coil-kt:coil:1.1.1'
     implementation 'io.coil-kt:coil-gif:1.1.1'
