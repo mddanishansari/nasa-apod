@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.md.nasaapod.MainViewModel
 import com.md.nasaapod.R
 import com.md.nasaapod.databinding.FragmentPictureListBinding
@@ -28,7 +29,7 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
 
         // fetch pictures only if necessary
         val pictureListState = mainViewModel.pictureListStateLiveData().value
-        if (pictureListState is PictureListState.Success && pictureListState.pictureList.isEmpty()) {
+        if (pictureListState is PictureListState.Success && pictureListState.pictureList.isNotEmpty()) {
             handlePictureList(pictureListState)
         } else {
             mainViewModel.fetchPictures()
@@ -46,7 +47,9 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
         binding.layoutData.isVisible = pictureListState is PictureListState.Success
 
         if (pictureListState is PictureListState.Success) {
-            val adapter = PictureAdapter(pictureListState.pictureList)
+            val adapter = PictureAdapter(pictureListState.pictureList) {
+                findNavController().navigate(R.id.action_pictureListFragment_to_pictureDetailFragment)
+            }
             binding.rvPicture.adapter = adapter
         }
     }

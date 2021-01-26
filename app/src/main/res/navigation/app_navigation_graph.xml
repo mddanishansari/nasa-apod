@@ -9,5 +9,14 @@
         android:id="@+id/pictureListFragment"
         android:name="com.md.nasaapod.picture_list.ui.PictureListFragment"
         android:label="fragment_picture_list"
-        tools:layout="@layout/fragment_picture_list" />
+        tools:layout="@layout/fragment_picture_list">
+        <action
+            android:id="@+id/action_pictureListFragment_to_pictureDetailFragment"
+            app:destination="@id/pictureDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pictureDetailFragment"
+        android:name="com.md.nasaapod.picture_detail.ui.PictureDetailFragment"
+        android:label="PictureDetailFragment"
+        tools:layout="@layout/fragment_picture_detail" />
 </navigation>
