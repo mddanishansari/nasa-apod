@@ -65,7 +65,6 @@ dependencies {
 
     // COIL (for loading images)
     implementation 'io.coil-kt:coil:1.1.1'
-    implementation 'io.coil-kt:coil-gif:1.1.1'
     implementation 'io.coil-kt:coil-svg:1.1.1'
 
     // HILT (for dependency injection)
