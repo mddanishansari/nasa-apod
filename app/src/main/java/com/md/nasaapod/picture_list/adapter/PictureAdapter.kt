@@ -20,8 +20,8 @@ class PictureAdapter(
         fun bind(picture: Picture) {
             // set thumbnail image
             binding.ivThumbnail.load(picture.thumbnailUrl) {
-                placeholder(R.drawable.ic_thumbnail_placeholder)
-                error(R.drawable.ic_thumbnail_error)
+                placeholder(R.drawable.ic_placeholder)
+                error(R.drawable.ic_error)
                 crossfade(true)
             }
 
