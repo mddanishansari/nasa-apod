@@ -5,6 +5,7 @@ import com.md.nasaapod.R
 import com.md.nasaapod.utils.RawFileReader
 import io.reactivex.rxjava3.core.Single
 import java.io.IOException
+import java.util.*
 
 class PictureRepositoryImpl(
     private val fileReader: RawFileReader,
@@ -18,7 +19,10 @@ class PictureRepositoryImpl(
 
                 // convert json to list of Picture
                 val pictureList =
-                    jsonMapper.readValue(pictureJson, Array<Picture>::class.java).toList()
+                    jsonMapper.readValue(pictureJson, Array<Picture>::class.java).toMutableList()
+
+                // sort list by date in descending order
+                pictureList.sortByDescending { it.date }
 
                 // emit the data
                 emitter.onSuccess(pictureList)

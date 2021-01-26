@@ -94,4 +94,37 @@ class PictureTest {
 
         assertThat(result.date).isEqualTo(calendar.time)
     }
+
+    @Test
+    fun `Picture list is sorted by date in descending order`() {
+        val input = """
+            [
+              {
+                "copyright": "A",
+                "date": "2018-12-01",
+                "explanation": "B",
+                "hdurl": "C",
+                "media_type": "D",
+                "service_version": "E",
+                "title": "F",
+                "url": "G"
+              },
+              {
+                "copyright": "H",
+                "date": "2019-11-01",
+                "explanation": "I",
+                "hdurl": "J",
+                "media_type": "K",
+                "service_version": "L",
+                "title": "M",
+                "url": "N"
+              }
+            ]
+            """.trimIndent()
+
+        val result = jsonMapper.readValue(input, Array<Picture>::class.java).toMutableList()
+        result.sortByDescending { it.date }
+
+        assertThat(result.first().title).isEqualTo("M")
+    }
 }
