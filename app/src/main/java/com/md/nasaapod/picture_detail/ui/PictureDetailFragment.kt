@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
-import com.md.nasaapod.MainViewModel
+import com.md.nasaapod.view_model.MainViewModel
 import com.md.nasaapod.R
 import com.md.nasaapod.databinding.FragmentPictureDetailBinding
 import com.md.nasaapod.picture_detail.adapter.PictureDetailAdapter
