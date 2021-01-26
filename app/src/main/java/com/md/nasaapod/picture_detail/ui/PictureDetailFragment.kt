@@ -38,6 +38,9 @@ class PictureDetailFragment : Fragment(R.layout.fragment_picture_detail) {
             val adapter = PictureDetailAdapter(pictureListState.pictureList)
             binding.vpPictureSlider.adapter = adapter
 
+            // set page transformer
+            binding.vpPictureSlider.setPageTransformer(ZoomOutPageTransformer())
+
             // scroll to current selected picture slide
             if (isSelectedPicturePresent) {
                 binding.vpPictureSlider.setCurrentItem(picturePosition, false)
