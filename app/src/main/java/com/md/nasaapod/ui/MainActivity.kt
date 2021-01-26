@@ -1,4 +1,4 @@
-package com.md.nasaapod
+package com.md.nasaapod.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

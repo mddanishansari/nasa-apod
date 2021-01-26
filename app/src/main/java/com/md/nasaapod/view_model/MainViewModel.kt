@@ -1,4 +1,4 @@
-package com.md.nasaapod
+package com.md.nasaapod.view_model
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
