@@ -2,6 +2,8 @@ package com.md.nasaapod.picture_list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.md.nasaapod.R
@@ -9,10 +11,9 @@ import com.md.nasaapod.databinding.ItemPictureBinding
 import com.md.nasaapod.picture_list.data.Picture
 
 class PictureAdapter(
-    private val pictureList: List<Picture>,
     private val onClick: (Int) -> Unit = {},
     private val onBookmarkClick: (Int, Boolean) -> Unit,
-) : RecyclerView.Adapter<PictureAdapter.PictureViewHolder>() {
+) : ListAdapter<Picture, PictureAdapter.PictureViewHolder>(PictureDiffCallback()) {
 
     class PictureViewHolder(
         private val binding: ItemPictureBinding,
@@ -58,8 +59,7 @@ class PictureAdapter(
     }
 
     override fun onBindViewHolder(holder: PictureViewHolder, position: Int) {
-        holder.bind(pictureList[position])
+        holder.bind(getItem(position))
     }
 
-    override fun getItemCount() = pictureList.size
 }
