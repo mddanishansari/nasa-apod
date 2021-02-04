@@ -35,6 +35,10 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
             mainViewModel.fetchPictures()
         }
 
+        // set recyclerview adapter
+        val pictureAdapter = PictureAdapter(::onPictureClick, ::onBookmarkClick)
+        binding.rvPicture.adapter = pictureAdapter
+
         // user should be able to fetch pictures if something goes wrong
         binding.btntryAgain.setOnClickListener { mainViewModel.fetchPictures() }
     }
@@ -47,9 +51,8 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
         binding.layoutData.isVisible = pictureListState is PictureListState.Success
 
         if (pictureListState is PictureListState.Success) {
-            val adapter =
-                PictureAdapter(pictureListState.pictureList, ::onPictureClick, ::onBookmarkClick)
-            binding.rvPicture.adapter = adapter
+            val pictureAdapter = binding.rvPicture.adapter as PictureAdapter
+            pictureAdapter.submitList(pictureListState.pictureList)
         }
     }
 

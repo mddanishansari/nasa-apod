@@ -21,8 +21,9 @@ data class Picture(
     val title: String,
     @JsonProperty("url")
     val thumbnailUrl: String,
-) {
     var isBookmarked: Boolean = false
+) {
+
 
     val date: Date
         get() = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(dateInString)
