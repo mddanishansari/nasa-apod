@@ -6,12 +6,12 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.md.nasaapod.view_model.MainViewModel
 import com.md.nasaapod.R
 import com.md.nasaapod.databinding.FragmentPictureListBinding
 import com.md.nasaapod.picture_list.adapter.PictureAdapter
 import com.md.nasaapod.picture_list.data.PictureListState
 import com.md.nasaapod.utils.viewBinding
+import com.md.nasaapod.view_model.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -47,16 +47,23 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
         binding.layoutData.isVisible = pictureListState is PictureListState.Success
 
         if (pictureListState is PictureListState.Success) {
-            val adapter = PictureAdapter(pictureListState.pictureList) { position ->
-                // navigate to detail screen
-                val action =
-                    PictureListFragmentDirections.actionPictureListFragmentToPictureDetailFragment(
-                        position
-                    )
-                findNavController().navigate(action)
-            }
+            val adapter =
+                PictureAdapter(pictureListState.pictureList, ::onPictureClick, ::onBookmarkClick)
             binding.rvPicture.adapter = adapter
         }
+    }
+
+    private fun onPictureClick(position: Int) {
+        // navigate to detail screen
+        val action =
+            PictureListFragmentDirections.actionPictureListFragmentToPictureDetailFragment(
+                position
+            )
+        findNavController().navigate(action)
+    }
+
+    private fun onBookmarkClick(position: Int, isBookmarked: Boolean) {
+
     }
 
     companion object {
