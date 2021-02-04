@@ -30,6 +30,14 @@ class PictureAdapter(
             // set thumbnail image
             binding.tvTitle.text = picture.title
 
+            // set bookmark icon
+            val bookmarkIcon = if (picture.isBookmarked) {
+                R.drawable.ic_bookmark_enable
+            } else {
+                R.drawable.ic_bookmark_disable
+            }
+            binding.ivBookmark.load(bookmarkIcon)
+
             // set on click listener
             binding.root.setOnClickListener { onClick(adapterPosition) }
 
@@ -37,7 +45,7 @@ class PictureAdapter(
             binding.ivBookmark.setOnClickListener {
                 onBookmarkClick(
                     adapterPosition,
-                    picture.isBookmarked
+                    !picture.isBookmarked
                 )
             }
         }
