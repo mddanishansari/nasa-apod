@@ -47,8 +47,11 @@ class MainViewModel @ViewModelInject constructor(val pictureRepository: PictureR
     fun bookmark(picturePosition: Int, isBookmarked: Boolean) {
         val pictureListData = pictureListLiveData.value
         if (pictureListData is PictureListState.Success) {
-            pictureListData.pictureList[picturePosition].isBookmarked = isBookmarked
-            pictureListLiveData.postValue(pictureListData)
+            val bookmarkedPicture =
+                pictureListData.pictureList[picturePosition].copy(isBookmarked = isBookmarked)
+            val updatedPictureList = pictureListData.pictureList.toMutableList()
+            updatedPictureList[picturePosition] = bookmarkedPicture
+            pictureListLiveData.postValue(PictureListState.Success(updatedPictureList))
         }
     }
 
