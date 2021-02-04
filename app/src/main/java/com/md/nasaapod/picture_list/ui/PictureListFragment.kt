@@ -51,8 +51,10 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
         binding.layoutData.isVisible = pictureListState is PictureListState.Success
 
         if (pictureListState is PictureListState.Success) {
-            val pictureAdapter = binding.rvPicture.adapter as PictureAdapter
-            pictureAdapter.submitList(pictureListState.pictureList)
+            val pictureAdapter = binding.rvPicture.adapter
+            if (pictureAdapter is PictureAdapter) {
+                pictureAdapter.submitList(pictureListState.pictureList)
+            }
         }
     }
 
