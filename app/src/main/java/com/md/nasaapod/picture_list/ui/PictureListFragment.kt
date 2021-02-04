@@ -63,7 +63,7 @@ class PictureListFragment : Fragment(R.layout.fragment_picture_list) {
     }
 
     private fun onBookmarkClick(position: Int, isBookmarked: Boolean) {
-
+        mainViewModel.bookmark(position, isBookmarked)
     }
 
     companion object {

@@ -44,6 +44,14 @@ class MainViewModel @ViewModelInject constructor(val pictureRepository: PictureR
             })
     }
 
+    fun bookmark(picturePosition: Int, isBookmarked: Boolean) {
+        val pictureListData = pictureListLiveData.value
+        if (pictureListData is PictureListState.Success) {
+            pictureListData.pictureList[picturePosition].isBookmarked = isBookmarked
+            pictureListLiveData.postValue(pictureListData)
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         disposable.dispose()
